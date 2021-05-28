@@ -19,7 +19,7 @@
 
       a {
         color: white;
-        margin-top: 0.5rem;  
+        margin-top: 0.5rem;
         opacity: 1;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
@@ -102,6 +102,17 @@
       }
       &:hover {
         color: $tag-presented;
+      }
+    }
+    &__translation-needed a {
+      background-color: $tag-translation;
+      border: 2px solid $tag-translation;
+      border-radius: 10px;
+      &:focus {
+        color: $tag-translation;
+      }
+      &:hover {
+        color: $tag-translation;
       }
     }
     .no-js &:focus-within &__info {
