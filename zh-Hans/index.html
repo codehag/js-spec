@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang='zh-Hans'>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <title>
+      TC39 – 标准化 JavaScript
+    </title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/zh-Hans/assets/css/normalize.css">
+    <link rel="stylesheet" href="/zh-Hans/assets/css/style.css?v=ab524447be5f16e05660c2233127776b01bdcfa9">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script defer src="/assets/js/main.js?v=ab524447be5f16e05660c2233127776b01bdcfa9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="no-js">
+    <header class="page-header container">
+  <div class="logo-box">
+    <a href="">
+      <img src="assets/img/logo.svg" alt="TC39" />
+    </a>
+  </div>
+  <nav class="page-menu">
+    <a href="#content" class="skip-menu">
+  跳转到正文
+</a>
+<a href="#menu" class="menu-toggle" tabindex="-1">
+  <span class="menu-toggle-text">
+    
+  </span>
+</a>
+<ul class="menu" id="menu">
+  <li class="menu-item has-submenu">
+    <a class="menu-link">
+      TC39
+    </a>
+    <button class="submenu-toggle" tabindex="-1">
+      <span class="sr-only">
+        展开 “TC39” 的子列表
+      </span>
+    </button>
+    <ul class="submenu">
+      <li class="submenu-item">
+        <a class="menu-link" href="https://github.com/tc39/agendas/blob/master/2021/05.md">
+          下一次会议的议程
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href="https://github.com/tc39/notes/blob/master/meetings/2021-04/apr-21.md">
+          历史会议记录
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="menu-item has-submenu">
+    <a class="menu-link">
+      规范文件
+    </a>
+    <button class="submenu-toggle" tabindex="-1">
+      <span class="sr-only">
+        展开 “规范文件” 的子列表
+      </span>
+    </button>
+    <ul class="submenu">
+      <li class="submenu-item">
+        <a class="menu-link" href="https://github.com/tc39/proposals">
+          进行中的提案
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href="https://tc39.es/ecma262/">
+          ECMA-262, ECMAScript
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href="https://tc39.es/ecma402/">
+          ECMA-402, 国际化 API
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="menu-item has-submenu">
+    <a class="menu-link">
+      贡献
+    </a>
+    <button class="submenu-toggle" tabindex="-1">
+      <span class="sr-only">
+        展开 “贡献” 的子列表
+      </span>
+    </button>
+    <ul class="submenu">
+      <li class="submenu-item">
+        <a class="menu-link" href='https://github.com/tc39/ecma262/blob/master/CONTRIBUTING.md'>
+          贡献规范正文
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href='https://github.com/tc39/test262/blob/master/CONTRIBUTING.md'>
+          贡献 test262 测试
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href="https://timothygu.me/es-howto/">
+          如何阅读规范文件
+        </a>
+      </li>
+      <li class="submenu-item">
+        <a class="menu-link" href='https://es.discourse.group/'>
+          ES Discourse 论坛
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="menu-item">
+    <a href="#proposals" class="menu-link">
+      提案进展概要
+    </a>
+  </li>
+  <li class="menu-item has-submenu menu-item__language">
+    <a class="menu-link menu-link__language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" height="100%" alt-text="语言"><defs><style>.cls-1,.cls-3{fill:#020202}.cls-2{fill:#fff}.cls-3{fill-rule:evenodd}</style></defs><path class="cls-1" d="M49.94 16.57L19.89 6v65.38l30.05-9.72z"/><path class="cls-2" d="M49.21 16.54L80.43 5.93v65.42l-31.22-9.73zM12.09 82.84l37.12-12.38V16.53L12.09 28.91z"/><path class="cls-1" d="M66.14 83.65l5.26 8.65 2.77-8zM24.72 35.12c-.2-.19.26 1.58.89 2.22a3.69 3.69 0 001.1.9 3.57 3.57 0 001.36.4 8 8 0 003.06-.58 5.09 5.09 0 002.49-1.92 1.49 1.49 0 00.26-.67 1.59 1.59 0 00-.05-.72.88.88 0 00-.1-.35 1 1 0 00-.23-.28.79.79 0 00-.31-.17.89.89 0 00-.36 0 19.07 19.07 0 00-2.78.67c-.74.22-2.26.69-2.92.83a4.61 4.61 0 01-2.41-.33zM43.45 56.36c-.3-.11-6.35-2.62-7.2-3s-2.43-1.09-3.25-1.42c2.28-3.53 3.72-6.19 3.91-6.59.36-.74 2.77-5.46 2.83-5.75a8.26 8.26 0 00.04-1.6c-.05-.26-.94.25-2.14.65s-3.49 1.9-4.37 2.08-3.73 1.26-5.18 1.74S24 43.74 22.81 44s-2.11.33-2.75.52a4.09 4.09 0 00.26 1.15 2.82 2.82 0 001.46 1.1 6.24 6.24 0 002.36 0A4.07 4.07 0 0025.7 46c.12-.2-.07-.81.14-1s3-.83 4-1.14a48.69 48.69 0 015.57-1.63c-.17.57-3.38 6.93-4.42 8.84s-7 10.24-8.32 11.71c-1 1.12-3.33 4-4.15 4.63a5.78 5.78 0 001.94-.24c1.66-1 4.41-4.44 5.3-5.49a93.09 93.09 0 006.79-9.13c.36.15 3.25 2.51 4 3A49.56 49.56 0 0041 58.1c.64.28 3.12 1.43 3.23 1a6.11 6.11 0 00-.78-2.74z"/><path class="cls-3" d="M29.46 87.88a18.09 18.09 0 001.74.93 39.41 39.41 0 003.93 1.74 42.7 42.7 0 005.41 1.65c1 .22 2.1.41 3.16.58.1 0 3 .35 3.54.35h2.91c1.13-.1 2.19-.16 3.32-.32.9-.13 1.9-.29 2.87-.52.71-.16 1.45-.32 2.16-.55s1.45-.45 2.19-.7c.48-.17 1-.39 1.51-.58s.94-.42 1.42-.62 1.25-.61 1.9-.93 1.09-.58 1.64-.9 1.39-1 1.9-1a1 1 0 011 1c0 .93-1.26 1.22-1.84 1.64a20.14 20.14 0 01-2 1.1 39.44 39.44 0 01-3.87 1.74A45 45 0 0157.27 94c-.61.13-1.22.29-1.83.39-.33.06-3.68.58-4.61.58h-4.26c-1.13-.1-2.32-.23-3.45-.39s-2.06-.35-3.06-.58c-.77-.16-1.61-.38-2.35-.61A35 35 0 0134 92.16a33.39 33.39 0 01-6.73-3.38.83.83 0 01-.33-.34.74.74 0 01-.09-.46.72.72 0 01.06-.36.79.79 0 01.2-.31 1 1 0 01.31-.21.85.85 0 01.36-.06 5.35 5.35 0 011.68.84zM48.21 69.73L13.09 81.44V29.62l35.12-11.7zm2-53.33v54.14A1.35 1.35 0 0150 71a.59.59 0 01-.3.26c-.8.32-37.09 12.51-37.57 12.51a1.13 1.13 0 01-.56-.21 1.07 1.07 0 01-.37-.47V28.81a1.3 1.3 0 01.22-.51 1.77 1.77 0 011-.52C13 27.59 48.68 15.6 49.2 15.6c.27 0 1 .22 1 .8z"/><path class="cls-3" d="M79.43 70l-29.21-9.09V17.24l29.21-9.92zm2-64v65.22a1.29 1.29 0 01-.06.4 1 1 0 01-.22.35.86.86 0 01-.33.23.9.9 0 01-.4.08 40 40 0 01-4-1.19l-12.19-3.77c-.9-.29-1.84-.58-2.71-.87s-1.61-.49-2.38-.74c-3.45-1.07-7-2.13-10.41-3.29a1.35 1.35 0 01-.45-.58V16.31a1.12 1.12 0 01.29-.49c.25-.29 11.31-4 15.66-5.41C65.39 10 79.92 5 80.37 5a1.09 1.09 0 01.4.07 1 1 0 01.33.21 1.23 1.23 0 01.23.33 1 1 0 01.08.39z"/><path class="cls-1" d="M88.82 83.65l-39-12.45.12-54.2 38.88 12.4z"/><path d="M69.14 41.23l-3.83 9.27 7 2.14zm-2.3-8.74l5 1.53L81 67l-5.18-1.56L74 58.7l-10.67-3.24L61 61l-5.17-1.6z" fill-rule="evenodd" fill="#fff"/></svg>
+
+        <span class="menu-link__language-text">
+          语言
+        </span>
+    </a>
+    <button class="submenu-toggle" tabindex="-1">
+      <span class="sr-only">
+        展开 “贡献” 的子列表
+      </span>
+    </button>
+
+    <ul class="submenu"><li class="submenu-item">
+          <a class="menu-link" href='/'>
+            English
+          </a>
+        </li><li class="submenu-item">
+          <a class="menu-link" href='/de'>
+            Deutsch
+          </a>
+        </li><li class="submenu-item">
+          <a class="menu-link" href='/ja'>
+            日本語
+          </a>
+        </li><li class="submenu-item">
+          <a class="menu-link" href='/ru'>
+            Русский
+          </a>
+        </li></ul>
+  </li>
+</ul>
+
+  </nav>
+</header>
+
+    <main class="container">
+    <h1 id="content" class="page-title">标准化 JavaScript</h1>
+    <section class="main-content">
+      <section>
+  <div class="g-row intro">
+    <div class="g-col-4">
+      <h2 class="section-headline">TC39</h2>
+      <p>
+        所属 Ecma International 的 TC39 是一个由 JavaScript 开发者、实现者、学者等组成的团体，与 JavaScript 社区合作维护和发展 JavaScript 的标准。
+      </p><p>
+        我们是 <a class="ecma-logo-box" href="https://www.ecma-international.org/"> <img src="assets/img/ecma-logo.svg" alt="Ecma International" /></a> 的一部分。
+      </p>
+    </div>
+    <div class="g-col-4">
+      <h2 class="section-headline">贡献</h2>
+      <p>
+       TC39 欢迎贡献。您可以通过对提案提供反馈、改进文档、编写测试或实现，或提出语言特性的想法来提供帮助。详情请看我们的<a href="https://github.com/tc39/ecma262/blob/master/CONTRIBUTING.md">贡献者指南</a>。
+      </p>
+      <p>
+       要以代表的身份参加 TC39 会议，您需要是 Ecma International 的会员组织的成员（雇员、学者等）。详见：<a href="https://ecma-international.org/memento/join.htm">加入 Ecma</a>。
+      </p>
+    </div>
+    <div class="g-col-4">
+      <h2 class="section-headline">规范文件</h2>
+      <p>
+       我们在 <a href="https://github.com/tc39/ecma262/">GitHub</a> 上开发 JavaScript（正式名称为 ECMAScript）规范，每两个月开会讨论一次提案。要了解更多关于这个过程的信息，请查看<a href="https://tc39.es/process-document/">新语言功能提案的五个阶段</a>。请参阅我们的<a href="https://github.com/tc39/agendas/">会议议程</a>和<a href="https://github.com/tc39/notes/">会议记录</a>，了解更多信息。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+      <article>
+  <h2 id="proposals" class="section-headline text-end">
+    提案进展概要
+  </h2>
+  <div class="featurelist">
+    <h3>
+      目前的提案
+    </h3>
+    <i class="featurelist__desc">
+      本节介绍的是处于<a href="https://tc39.es/process-document/">提案流程</a>中第三阶段的提案，这意味着它们即将完成。
+    </i>
+    <details class="featurelist__legend">
+      <summary><strong>
+          如何查看提案列表
+        </strong></summary>
+      <p>
+      每项提案都相关的链接。标签标记了它的类型。下面是一个表格，其中包含了标签示例及其含义。如果您需要更清晰的解释，所有标签上都有悬浮文本。
+      </p>
+
+      <strong>
+        标签的类型及其含义
+      </strong>
+      <ul class="featurelist__legend__tags">
+          <li>
+            上一次在 TC39 会议上被代表讨论的日期:
+            <div class="featurelist__item__presented featurelist__item__tag">
+              <a href="" title='最近一次发言的说明'>2018 年 12 月</a>
+            </div>
+          </li>
+          <li>
+            测试覆盖:
+            <div class="featurelist__item__tests featurelist__item__tag">
+              <a title='在 test262 GitHub 仓库中引入测试的 PR。'>
+                测试覆盖
+              </a>
+            </div>
+          </li>
+          <li>
+            规范文本:
+            <div class="featurelist__item__spec featurelist__item__tag">
+              <a title='阅读提案规范内容'>
+                规范
+              </a>
+            </div>
+          </li>
+      </ul>
+    </details>
+  </div>
+</article>
+
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-regexp-legacy-features">JavaScript 中的历史 RegExp 特性</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2017-05/may-25.md#15ia-regexp-legacy-features-for-stage-3" title='最近一次发言的说明'>May&#xA0;2017</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__tests featurelist__item__tag">
+              <a href="https://github.com/tc39/test262/pull/2650" title=''>
+                测试覆盖
+              </a>
+            </li>
+          
+          
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        
+        
+        作者:
+        
+        Claude Pache
+        
+        
+        |
+        
+        推进者:
+        
+        Mark Miller, Claude Pache
+        
+      
+    </div>
+    
+    <div class="featurelist__item__desc">该提案规范了 JavaScript 中已废弃的 RegExp 特性，即构造函数的静态属性以及 RegExp.prototype.compile 方法。</div>
+    
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-hashbang">Hashbang 语法</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2018-11/nov-28.md#hash-bang-grammar" title='最近一次发言的说明'>November&#xA0;2018</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__tests featurelist__item__tag">
+              <a href="https://github.com/tc39/test262/pull/2065" title=''>
+                测试覆盖
+              </a>
+            </li>
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-hashbang" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Bradley Farias
+      
+    </div>
+    
+    <div class="featurelist__item__desc">该提案意在配合一些允许/需要使用 Hashbang 的 JS 环境。在这种环境中，目前它们需要先删除 hashbang 以生成有效的 JS 代码。该提案将统一和规范这种做法。</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-hashbang"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-hashbang"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-hashbang"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-hashbang"
+    >
+      <pre><code class="js" tabindex="-1">#!/usr/bin/env node
+// in the Module Goal
+export {};
+console.log(1);</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-atomics-wait-async"><code>Atomics.waitAsync</code></a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2019-12/december-4.md#atomicswaitasync-for-stage-3" title='最近一次发言的说明'>December&#xA0;2019</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__tests featurelist__item__tag">
+              <a href="https://github.com/tc39/test262/issues/2511" title=''>
+                测试覆盖
+              </a>
+            </li>
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-atomics-wait-async" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        
+        
+        作者:
+        
+        Lars Hansen
+        
+        
+        |
+        
+        推进者:
+        
+        Shu-yu Guo, Lars Hansen
+        
+      
+    </div>
+    
+    <div class="featurelist__item__desc">该提案为 Atomics 添加一个异步的 <code>wait</code>，用于不允许阻塞线程的环境。</div>
+    
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-relative-indexing-method"><code>.at()</code></a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="at" title='最近一次发言的说明'>September&#xA0;2020</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__tests featurelist__item__tag">
+              <a href="https://github.com/tc39/test262/pull/2812" title=''>
+                测试覆盖
+              </a>
+            </li>
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-relative-indexing-method" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Shu-yu Guo, Tab Atkins
+      
+    </div>
+    
+    <div class="featurelist__item__desc">该提案计划在所有可索引类（<code>Array</code>、<code>String</code>、<code>TypedArray</code>）中添加一个<code>.at()</code>方法。该方法允许负数索引。</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-relative-indexing-method"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-relative-indexing-method"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-relative-indexing-method"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-relative-indexing-method"
+    >
+      <pre><code class="js" tabindex="-1">var list = ["apple", "orange", "banana"];
+list.at(-1) // banana, using negative index
+list.at(0)  // apple
+list.at(1)  // orange
+list.at(2)  // banana</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-import-assertions">import 断言</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="import-assertions" title='最近一次发言的说明'>September&#xA0;2020</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-import-assertions" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Myles Borins, Sven Sauleau, Dan Clark, Daniel Ehrenberg
+      
+    </div>
+    
+    <div class="featurelist__item__desc">该提案为 `import` 语句添加了断言语法。如果模块不符合期望的断言，则导入会失败。</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-import-assertions"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-import-assertions"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-import-assertions"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-import-assertions"
+    >
+      <pre><code class="js" tabindex="-1">new Worker(&#x22;foo.wasm&#x22;, { type: &#x22;module&#x22;, assert: { type: &#x22;webassembly&#x22; } });</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-json-modules">JSON Modules</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2021-01/jan-25.md#json-modules-for-stage-3" title='最近一次发言的说明'>January&#xA0;2021</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-json-modules" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Sven Sauleau, Daniel Ehrenberg, Myles Borins, Dan Clark
+      
+    </div>
+    
+    <div class="featurelist__item__desc">Proposal to import JSON files as modules.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-json-modules"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-json-modules"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-json-modules"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-json-modules"
+    >
+      <pre><code class="js" tabindex="-1">import json from &#x22;./foo.json&#x22; assert { type: &#x22;json&#x22; };</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-private-fields-in-in">Ergonomic Brand Checks</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2021-01/jan-27.md#ergonomic-brand-checks" title='最近一次发言的说明'>January 2021</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-private-fields-in-in" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Jordan Harband
+      
+    </div>
+    
+    <div class="featurelist__item__desc">EcmaScript proposal to provide brand checks without exceptions.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-private-fields-in-in"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-private-fields-in-in"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-private-fields-in-in"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-private-fields-in-in"
+    >
+      <pre><code class="js" tabindex="-1">class C {
+  #brand;
+  #method() {}
+  get #getter() {}
+  static isC(obj) {
+    return #brand in obj && #method in obj && #getter in obj;
+  }
+}</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-class-static-block">Class Static Block</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2021-03/mar-9.md#class-static-initialization-blocks" title='最近一次发言的说明'>March 2021</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-class-static-block" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Ron Buckton
+      
+    </div>
+    
+    <div class="featurelist__item__desc">Class static blocks provide a mechanism to perform additional static initialization during class definition evaluation. This is not intended as a replacement for public fields, as they provide useful information for static analysis tools and are a valid target for decorators. Rather, this is intended to augment existing use cases and enable new use cases not currently handled by that proposal.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-class-static-block"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-class-static-block"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-class-static-block"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-class-static-block"
+    >
+      <pre><code class="js" tabindex="-1">// "friend" access (same module) let A, B; {
+  let friendA;
+
+  A = class A {
+    #x;
+
+    static {
+        friendA = {
+          getX(obj) { return obj.#x },
+          setX(obj, value) { obj.#x = value }
+        };
+    }
+  };
+
+  B = class B {
+    constructor(a) {
+      const x = friendA.getX(a); // ok
+      friendA.setX(a, x); // ok
+    }
+  };
+}</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-error-cause">Error Cause</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><span>March 2021</span></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-error-cause" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        
+        
+        作者:
+        
+        Chengzhong Wu
+        
+        
+        |
+        
+        推进者:
+        
+        Ron Buckton, Chengzhong Wu, Hemanth HM
+        
+      
+    </div>
+    
+    <div class="featurelist__item__desc">Errors will be constructed to represent runtime abnormalities. To help unexpected behavior diagnosis, errors need to be augmented with contextual information like error messages, error instance properties to explain what happened at the time.  If the error were thrown from deep internal methods, the thrown error may not be straightforward to be easily conducted without proper exception design pattern. This proposal introduces a convenient way to forward the cause.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-error-cause"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-error-cause"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-error-cause"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-error-cause"
+    >
+      <pre><code class="js" tabindex="-1">await fetch('//domain/upload', { method: 'POST', body: jobResult }) .catch(err => {
+  throw new Error('Upload job result failed', { cause: err });
+});</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-temporal">Temporal</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><a href="https://github.com/tc39/notes/blob/master/meetings/2021-03/mar-9.md#temporal-for-stage-3" title='最近一次发言的说明'>March 2021</a></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-temporal" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Maggie Pint, Matt Johnson, Philipp Dunkel
+      
+    </div>
+    
+    <div class="featurelist__item__desc">Date has been a long-standing pain point in ECMAScript. This proposes Temporal, a global Object that acts as a top-level namespace (like Math), that brings a modern date/time API to the ECMAScript language. For a detailed breakdown of motivations, see  the proposal readme.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-temporal"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-temporal"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-temporal"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-temporal"
+    >
+      <pre><code class="js" tabindex="-1">// See the repo for detailed examples. // small example from the cook book
+const date = Temporal.now.plainDateISO(); // Gets the current date
+date.toString(); // returns the date in ISO 8601 date format
+// If you additionally want the time
+Temporal.now.plainDateTimeISO().toString(); // date and time in ISO 8601 format</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-accessible-object-hasownproperty">Accessible Object.prototype.hasOwnProperty()</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><span>May 2021</span></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-accessible-object-hasownproperty" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        
+        
+        作者:
+        
+        Jamie Kyle, Tierney Cyren
+        
+        
+        |
+        
+        推进者
+        
+        Tierney Cyren
+        
+      
+    </div>
+    
+    <div class="featurelist__item__desc">Proposal for an Object.hasOwn() method to make Object.prototype.hasOwnProperty() more accessible.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-accessible-object-hasownproperty"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-accessible-object-hasownproperty"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-accessible-object-hasownproperty"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-accessible-object-hasownproperty"
+    >
+      <pre><code class="js" tabindex="-1">if (Object.hasOwn(object, "foo")) {
+  console.log("has property foo")
+}</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<article class="featurelist__item">
+  <div class="featurelist__item__intro">
+    <header class="g-row">
+      <h4 class="featurelist__item__title flex-grow">
+        <a href="https://github.com/tc39/proposal-resizablearraybuffer">In-Place Resizable and Growable ArrayBuffers</a>
+      </h4>
+      <div class="featurelist__item__tags">
+        <ul class="featurelist__item__status featurelist__item__tags">
+          
+          
+          <li class="featurelist__item__presented featurelist__item__tag"><span>May 2021</span></li>
+          
+          
+          
+          
+            <li class="featurelist__item__spec featurelist__item__tag">
+              <a href="https://tc39.es/proposal-resizablearraybuffer" title='阅读提案规范内容'>
+                规范
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </header>
+    <div class="featurelist__item__author">
+      
+        作者和推进者:
+        Shu-yu Guo
+      
+    </div>
+    
+    <div class="featurelist__item__desc">ArrayBuffers have enabled in-memory handling of binary data and have enjoyed great success. This proposal extends the ArrayBuffer constructors to take an additional maximum length that allows in-place growth and shrinking of buffers. Similarly, SharedArrayBuffer is extended to take an additional maximum length that allows in-place growth. The transfer method is also re-introduced here as a standard way to detach ArrayBuffers, perform zero-copy moves, and to "fix" resizable ArrayBuffer instances to ArrayBuffer instances.</div>
+    
+    
+    <div
+      class="featurelist__item__example"
+      aria-controls="example-proposal-resizablearraybuffer"
+      aria-expanded="false"
+      role="button"
+      tabindex="0"
+      id="example-toggle-proposal-resizablearraybuffer"
+    >
+      示例
+    </div>
+    <section
+      class="featurelist__item__info"
+      id="example-proposal-resizablearraybuffer"
+      aria-hidden="true"
+      aria-labelledby="example-toggle-proposal-resizablearraybuffer"
+    >
+      <pre><code class="js" tabindex="-1">// Resizable ArrayBuffer
+
+let rab = new ArrayBuffer(1024, { maximumByteLength: 1024 ** 2 });
+assert(rab.byteLength === 1024);
+assert(rab.maximumByteLength === 1024 ** 2);
+assert(rab.resizable);
+rab.resize(rab.byteLength * 2);
+assert(rab.byteLength === 1024 * 2);
+
+// Transfer the first 1024 bytes.
+let ab = rab.transfer(1024);
+
+// rab is now detached
+assert(rab.byteLength === 0);
+assert(rab.maximumByteLength === 0);
+
+// The contents are moved to ab.
+assert(!ab.resizable);
+assert(ab.byteLength === 1024);</code></pre>
+    </section>
+    
+  </div>
+</article>
+
+<section class="featurelist__more">
+  <a href="https://github.com/tc39/proposals">
+    查看各阶段的提案
+  </a>
+</section>
+
+    </section>
+    </main>
+    <footer class="page-footer container">
+  <section class="synopsis grid-container">
+    <div class="g-row">
+      <div class="g-col-3">
+        <h3 id="connect-label">
+          联系我们
+        </h3>
+        <ul class="connect" aria-labelledby="connect-label">
+          <li><a href="https://es.discourse.group" target="_blank">
+            <span class="icon"><svg height="24" aria-label="Discourse" class="octicon octicon-comment-discussion" viewBox="0 0 24 24" version="1.1" width="24" role="img"><path fill-rule="evenodd" d="M1.75 1A1.75 1.75 0 000 2.75v9.5C0 13.216.784 14 1.75 14H3v1.543a1.457 1.457 0 002.487 1.03L8.061 14h6.189A1.75 1.75 0 0016 12.25v-9.5A1.75 1.75 0 0014.25 1H1.75zM1.5 2.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v9.5a.25.25 0 01-.25.25h-6.5a.75.75 0 00-.53.22L4.5 15.44v-2.19a.75.75 0 00-.75-.75h-2a.25.25 0 01-.25-.25v-9.5z"></path><path d="M22.5 8.75a.25.25 0 00-.25-.25h-3.5a.75.75 0 010-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0122.25 20H21v1.543a1.457 1.457 0 01-2.487 1.03L15.939 20H10.75A1.75 1.75 0 019 18.25v-1.465a.75.75 0 011.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 01.53.22l2.72 2.72v-2.19a.75.75 0 01.75-.75h2a.25.25 0 00.25-.25v-9.5z"></path></svg></span>
+            <span>Discourse</span>
+          </a></li>
+          <li><a href="https://github.com/tc39" target="_blank">
+            <span class="icon"><svg height="24" aria-label="GitHub" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" role="img"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></span>
+            <span>GitHub</span>
+          </a></li>
+          <li><a href="http://twitter.com/tc39" target="_blank">
+            <span class="icon"><svg height="24" aria-label="Twitter" class="octicon octicon-mark-twitter" viewBox="0 0 16 16" version="1.1" width="24" role="img"><path d="m14.115 3.3111c0.67809-0.42788 1.1984-1.1064 1.4425-1.9146-0.63482 0.39718-1.3364 0.68442-2.0849 0.83993-0.59725-0.67353-1.4509-1.0935-2.3956-1.0935-1.8126 0-3.2814 1.5501-3.2814 3.4617 0 0.27139 0.027277 0.53585 0.083581 0.78842-2.7272-0.14461-5.1455-1.5214-6.7655-3.6172-0.28268 0.51307-0.44421 1.1074-0.44421 1.7413 0 1.2005 0.57944 2.2603 1.4603 2.8823-0.53812-0.017828-1.0443-0.17532-1.4876-0.43284v0.04259c0 1.6779 1.1307 3.0774 2.6343 3.3944-0.27611 0.081219-0.56535 0.12183-0.86588 0.12183-0.2113 0-0.41791-0.020801-0.617-0.061409 0.41697 1.3748 1.6294 2.3772 3.0662 2.4039-1.1241 0.92906-2.5394 1.4817-4.0767 1.4817-0.26484 0-0.52685-0.01486-0.78323-0.04755 1.4528 0.98156 3.178 1.555 5.0318 1.555 6.0386 0 9.3387-5.2753 9.3387-9.8503 0-0.15056-0.0018-0.30012-0.0084-0.4477 0.64147-0.48831 1.1993-1.0984 1.6379-1.7928-0.5888 0.27536-1.2218 0.46157-1.8849 0.54477z"/></svg></span>
+            <span>Twitter</span>
+          </a></li>
+        </ul>
+      </div>
+      <div class="g-col-3">
+        <h3 id="standards-label">
+          标准文件
+        </h3>
+        <ul aria-labelledby="standards-label">
+          <li><a href="https://tc39.es/ecma262">ECMA-262, ECMAScript</a></li>
+          <li><a href="https://tc39.es/ecma402">ECMA-402, Intl API</a></li>
+        </ul>
+      </div>
+      <div class="g-col-3">
+        <h3 id="proposals-label">
+          语言提案
+        </h3>
+        <ul aria-labelledby="proposals-label">
+          <li><a href="https://github.com/tc39/proposals/blob/HEAD/stage-0-proposals.md#stage-0-proposals">Stage 0</a></li>
+          <li><a href="https://github.com/tc39/proposals/blob/HEAD/stage-1-proposals.md#stage-1-proposals">Stage 1</a></li>
+          <li><a href="https://github.com/tc39/proposals/blob/HEAD/README.md#stage-2">Stage 2</a></li>
+          <li><a href="https://github.com/tc39/proposals/blob/HEAD/README.md#stage-3">Stage 3</a></li>
+          <li><a href="https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md#finished-proposals">Stage 4</a></li>
+        </ul>
+      </div>
+      <div class="g-col-3">
+        <h3 id="contribute-label">
+          贡献
+        </h3>
+        <ul aria-labelledby="contribute-label">
+          <li><a href='https://github.com/tc39/ecma262/blob/master/CONTRIBUTING.md'>
+              贡献规范正文
+            </a></li>
+          <li><a href='https://github.com/tc39/test262/blob/master/CONTRIBUTING.md'>
+              贡献 test262 测试
+            </a></li>
+          <li><a href="https://timothygu.me/es-howto" target="_blank">
+              如何阅读规范文件
+            </a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div class="grid-container">
+    <div class="grid-start">
+      <span>
+         我们正在寻找反馈
+         <br />
+         请通过本链接 <a href="https://github.com/tc39/tc39.github.io/issues/new" target="_blank">提交您的问题</a>。
+      </span>
+    </div>
+    <nav class="grid-end" aria-label="site info">
+      <ul class="pipe-nav">
+        <li><a href="https://tc39.es/archives">
+            历史存档
+          </a></li>
+        <li><a href='https://tc39.es/process-document'>
+            我们的流程
+          </a></li>
+        <li><a href='https://tc39.es/code-of-conduct'>
+            Code of Conduct
+          </a></li>
+      </ul>
+      <span>&copy; Ecma International</span>
+    </nav>
+  </div>
+</footer>
+
+    <img class="hidden" src="https://d3nrsflo8ae6b5.cloudfront.net/1x1.png" alt="pixel" />
+  </body>
+</html>
